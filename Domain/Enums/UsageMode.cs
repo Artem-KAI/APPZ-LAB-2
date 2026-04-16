@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums;
 
-public enum UsageMode
+public enum  UsageMode
 {
     NonIntensive,
     Intensive
