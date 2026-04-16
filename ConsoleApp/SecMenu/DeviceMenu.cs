@@ -5,7 +5,6 @@ namespace ConsoleApp.SecMenu;
 
 public static class DeviceMenu
 {
-    // Змінюємо void на IDevice?
     public static IDevice? Select()
     {
         Console.Clear();
@@ -18,7 +17,6 @@ public static class DeviceMenu
 
         string? input = Console.ReadLine();
 
-        // Використовуємо pattern matching для красивого повернення
         return input switch
         {
             "1" => new Laptop(6000),

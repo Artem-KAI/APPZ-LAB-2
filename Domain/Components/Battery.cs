@@ -7,47 +7,22 @@ public class Battery
     public int CapacityMah { get; }
     public int RemainingHours { get; private set; }
 
-    // Це система сповіщень
+    // Ін'єкція залежності для патерну Strategy
+    private readonly IBatteryDrainStrategy _drainStrategy;
+
     public event Action<int>? BatteryChanged;
 
-    public Battery(int capacityMah)
+    public Battery(int capacityMah, IBatteryDrainStrategy drainStrategy)
     {
         CapacityMah = capacityMah;
+        _drainStrategy = drainStrategy;
         SetMode(UsageMode.NonIntensive);
     }
 
     public void SetMode(UsageMode mode)
     {
-        RemainingHours = CalculateHours(mode);
+        // Делегуємо розрахунок обраній стратегії
+        RemainingHours = _drainStrategy.CalculateHours(mode);
         BatteryChanged?.Invoke(RemainingHours);
-    }
-
-    private int CalculateHours(UsageMode mode)
-    {
-        if (CapacityMah >= 2000 && CapacityMah <= 3000)
-        {
-            if (mode == UsageMode.NonIntensive)
-            {
-                return 48; 
-            }
-            else
-            {
-                return 16; 
-            }
-        }
-
-        if (CapacityMah >= 5000 && CapacityMah <= 7000)
-        {
-            if (mode == UsageMode.NonIntensive)
-            {
-                return 12;  
-            }
-            else
-            {
-                return 4;  
-            }
-        }
-
-        return 0;
     }
 }

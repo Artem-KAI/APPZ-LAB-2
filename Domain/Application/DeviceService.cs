@@ -1,5 +1,4 @@
-﻿// Файл: Application/DeviceService.cs
-using Domain.Enums;
+﻿using Domain.Enums;
 using Domain.Interfaces;
 
 namespace Application;
@@ -13,14 +12,13 @@ public class DeviceService
         _device = device;
     }
 
-    // ЗМІНЕНО ТУТ: Повертаємо кортеж
     public (bool Success, string ErrorMessage) TryPerform(DeviceAction action)
     {
         var checkResult = _device.CanPerform(action);
 
         if (!checkResult.Success)
         {
-            return checkResult; // Повертаємо конкретну помилку
+            return checkResult; 
         }
 
         _device.Perform(action);

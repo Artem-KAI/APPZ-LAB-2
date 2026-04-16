@@ -1,5 +1,4 @@
-﻿// Файл: ConsoleApp.Status/StatusView.cs
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 
 namespace ConsoleApp.Status;
 

@@ -4,7 +4,6 @@ namespace ConsoleApp.SecMenu;
 
 public static class PowerMenu
 {
-    // Приймаємо device
     public static void Show(IDevice? device)
     {
         if (device == null) return;
@@ -21,10 +20,10 @@ public static class PowerMenu
         switch (choice)
         {
             case "1":
-                device.PlugInToMains(); // Оновлений метод
+                device.PlugInToMains();  
                 break;
             case "2":
-                device.UnplugFromMains(); // Оновлений метод
+                device.UnplugFromMains(); 
                 break;
         }
     }

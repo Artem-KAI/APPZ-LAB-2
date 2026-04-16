@@ -1,4 +1,5 @@
 ﻿using Domain.Enums;
+using Domain.Events;
 
 namespace Domain.Interfaces;
 
@@ -7,20 +8,17 @@ public interface IDevice
     string Name { get; }
     bool HasSoftware { get; }
     bool HasNetwork { get; }
-    bool IsPluggedInToMains { get; } // Замість PowerOn
+    bool IsPluggedInToMains { get; }
     int RemainingHours { get; }
 
-    // Ось вона - подія для твого UI!
-    event Action<string, int>? BatteryLifeChanged;
+    event EventHandler<DeviceEventArgs>? BatteryLifeChanged; // observer pattern
 
     void InstallSoftware();
     void ConnectNetwork();
-    void ConnectPeripheral(IPeripheral peripheral); // Універсальний метод
-    void PlugInToMains();    // Замість EnablePower
-    void UnplugFromMains();  // Замість DisablePower
+    void ConnectPeripheral(IPeripheral peripheral); 
+    void PlugInToMains();    
+    void UnplugFromMains();  
 
     (bool Success, string ErrorMessage) CanPerform(DeviceAction action);
-
-    //bool CanPerform(DeviceAction action);
     void Perform(DeviceAction action);
 }

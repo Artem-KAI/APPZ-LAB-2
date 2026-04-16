@@ -1,5 +1,4 @@
-﻿// Файл: ConsoleApp.SecMenu/ActionsMenu.cs
-using Application;
+﻿using Application;
 using Domain.Enums;
 
 namespace ConsoleApp.SecMenu;
@@ -42,7 +41,6 @@ public static class ActionsMenu
 
         if (action == null) return;
 
-        // Отримуємо розширену відповідь
         var result = service.TryPerform(action.Value);
 
         Console.WriteLine("\n--------------------------------------");
@@ -54,7 +52,7 @@ public static class ActionsMenu
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            // Виводимо конкретну причину, яку повернув домен
+
             Console.WriteLine($"Неможливо виконати: {result.ErrorMessage}");
         }
         Console.ResetColor();

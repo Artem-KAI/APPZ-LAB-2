@@ -1,11 +1,10 @@
-﻿using Domain.Components; // Для AudioHeadset та PrinterDevice
+﻿using Domain.Components; 
 using Domain.Interfaces;
 
 namespace ConsoleApp.SecMenu;
 
 public static class SettingsMenu
 {
-    // Приймаємо device
     public static void Show(IDevice? device)
     {
         if (device == null) return;
