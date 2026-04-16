@@ -1,5 +1,4 @@
-﻿// Файл: Domain/Builders/DeviceBuilder.cs
-using Domain.Components;
+﻿using Domain.Components;
 using Domain.Devices;
 using Domain.Interfaces;
 
@@ -11,12 +10,12 @@ public class DeviceBuilder
     private int _batteryCapacity = 3000;
     private string _processorModel = "Generic CPU";
     private readonly List<Memory> _memory = new();
-    private TouchScreen _touchScreen = new TouchScreen(); // За замовчуванням є
+    private TouchScreen _touchScreen = new TouchScreen(); 
 
     public DeviceBuilder SetName(string name)
     {
         _name = name;
-        return this; // Повертаємо this для ланцюжкових викликів (Fluent Interface)
+        return this; 
     }
 
     public DeviceBuilder SetBattery(int capacityMah)
@@ -43,10 +42,8 @@ public class DeviceBuilder
         return this;
     }
 
-    // Головний метод, який "збирає" фінальний продукт
     public IDevice Build()
     {
-        // ТУТ МАГІЯ: Будівельник сам вирішує, яку Стратегію дати батареї!
         IBatteryDrainStrategy strategy = _batteryCapacity >= 5000
             ? new HighCapacityStrategy()
             : new StandardCapacityStrategy();
@@ -54,7 +51,6 @@ public class DeviceBuilder
         var battery = new Battery(_batteryCapacity, strategy);
         var processor = new Processor(_processorModel);
 
-        // Якщо пам'ять не додали, ставимо мінімум
         if (!_memory.Any())
         {
             _memory.Add(new Ram(4));

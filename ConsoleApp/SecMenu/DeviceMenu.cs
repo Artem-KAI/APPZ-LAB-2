@@ -9,7 +9,7 @@ public static class DeviceMenu
     {
         Console.Clear();
         Console.WriteLine("1. Ноутбук(готова збірка)");
-        Console.WriteLine("2. Смартфон (готова збірка)");
+        Console.WriteLine("2. Смартфон (готова збірк`а)");
         Console.WriteLine("3. Планшет (готова збірка)");
         Console.WriteLine("4. Зібрати власний кастомний пристрій");
         Console.ForegroundColor = ConsoleColor.DarkGray;

@@ -4,8 +4,6 @@ namespace Domain.Devices;
 
 public class CustomDevice : DeviceBase
 {
-    // internal конструктор, щоб цей клас можна було створити 
-    // через будівельник патерн (інкапсуляція створення)
     internal CustomDevice(
         string name,
         Battery battery,
@@ -14,5 +12,6 @@ public class CustomDevice : DeviceBase
         TouchScreen touchScreen)
         : base(name, battery, processor, memory, touchScreen)
     {
+
     }
 }
