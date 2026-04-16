@@ -57,5 +57,6 @@ public static class ActionsMenu
         }
         Console.ResetColor();
 
+        Console.ReadKey();
     }
 }

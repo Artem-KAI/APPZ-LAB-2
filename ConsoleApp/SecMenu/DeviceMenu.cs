@@ -8,15 +8,15 @@ public static class DeviceMenu
     public static IDevice? Select()
     {
         Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("""
-        1. Ноутбук (Стандартна збірка)
-        2. Смартфон (Стандартна збірка)
-        3. Планшет (Стандартна збірка)
-        4. Зібрати власний кастомний пристрій 🛠️
-        0. Назад
-        """);
+        Console.WriteLine("1. Ноутбук(готова збірка)");
+        Console.WriteLine("2. Смартфон (готова збірка)");
+        Console.WriteLine("3. Планшет (готова збірка)");
+        Console.WriteLine("4. Зібрати власний кастомний пристрій");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("0. Назад");
         Console.ResetColor();
+
+        Console.Write("\nОберіть дію: ");
 
         string? input = Console.ReadLine();
 

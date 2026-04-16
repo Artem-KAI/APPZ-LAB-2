@@ -10,13 +10,14 @@ public static class SettingsMenu
         if (device == null) return;
 
         Console.Clear();
-        Console.WriteLine("""
-        1. Встановити ПЗ
-        2. Підключитись до мережі
-        3. Підключити навушники (Аудіо)
-        4. Підключити принтер
-        0. Назад
-        """);
+        Console.WriteLine("1. Встановити ПЗ");
+        Console.WriteLine("2. Підключитись до мережі");
+        Console.WriteLine("3. Підключити навушники (Аудіо)");
+        Console.WriteLine("4. Підключити принтер");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("0. Назад");
+        Console.ResetColor();
+        Console.Write("\nОберіть дію: ");
 
         string? choice = Console.ReadLine();
 
