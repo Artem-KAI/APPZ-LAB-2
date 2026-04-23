@@ -7,9 +7,9 @@ public class Battery
     public int CapacityMah { get; }
     public int RemainingHours { get; private set; }
 
-    private readonly IBatteryDrainStrategy _drainStrategy;
+    private readonly IBatteryDrainStrategy _drainStrategy;// strategy
 
-    public event Action<int>? BatteryChanged;
+    public event Action<int>? BatteryChanged;// observer
 
     public Battery(int capacityMah, IBatteryDrainStrategy drainStrategy)
     {

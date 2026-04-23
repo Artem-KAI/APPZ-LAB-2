@@ -13,6 +13,7 @@ public abstract class DeviceBase : IDevice
     protected List<Memory> Memory { get; }
     protected TouchScreen TouchScreen { get; }
     protected Battery Battery { get; }
+
     private readonly List<IPeripheral> _peripherals = new();
 
 
@@ -51,7 +52,7 @@ public abstract class DeviceBase : IDevice
     private bool HasPeripheral<T>() where T : IPeripheral => _peripherals.OfType<T>().Any();
 
 
-    // бізнес-логіка виконання дій
+    // бізнес логіка виконання дій
     public void Perform(DeviceAction action)
     {
         if (IsPluggedInToMains) 

@@ -11,7 +11,7 @@ public class AppMenu
     private IDevice? _device;
     private DeviceService? _service;
 
-    // екземпляр спостерігача
+
     private readonly ConsoleDeviceObserver _observer = new(); // observer pattern
 
     public void Run()
@@ -21,14 +21,14 @@ public class AppMenu
             Console.Clear();
             StatusView.Show(_device);
 
-            Console.WriteLine("""
-            1. Вибрати техніку
-            2. Налаштування
-            3. Дія
-            4. Вкл/Викл енергію
-            0. Вихід
-            """);
-           
+            Console.WriteLine("1. Вибрати техніку");
+            Console.WriteLine("2. Налаштування");         
+            Console.WriteLine("3. Дія");
+            Console.WriteLine("4. Вкл/Викл енергію");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("0. Вихід");
+            Console.ResetColor();
+
             string? input = Console.ReadLine();
 
             switch (input)
@@ -53,7 +53,8 @@ public class AppMenu
 
     private void SelectDevice()
     {
-        if (_device != null) _observer.Unsubscribe(_device);
+        if (_device != null) 
+            _observer.Unsubscribe(_device);
 
         _device = DeviceMenu.Select();
 

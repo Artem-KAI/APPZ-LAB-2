@@ -44,9 +44,32 @@ public static class DeviceMenu
         Console.Write("Введіть назву пристрою (напр. MySuperPC228): ");
         string name = Console.ReadLine() ?? "Custom PC";
 
-        Console.Write("Введіть ємність батареї (2000-7000 мАг): ");
-        if (int.TryParse(Console.ReadLine(), out int battery))
-            builder.SetBattery(battery);
+        while (true)
+        {
+            Console.Write("Введіть ємність батареї 2000-7000 мАг: ");
+            string? batteryInput = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(batteryInput))
+                break; 
+
+            if (int.TryParse(batteryInput, out int battery))
+            {
+                if (battery >= 2000 && battery <= 7000)
+                {
+                    builder.SetBattery(battery);
+                    break;
+                }
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Значення має бути в діапазоні 2000–7000. Спробуйте ще раз.");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Неправильний формат числа. Спробуйте ще раз.");
+                Console.ResetColor();
+            }
+        }
 
         Console.Write("Введіть назву процесора (напр. Intel i9): ");
         string cpu = Console.ReadLine() ?? "Generic CPU";
